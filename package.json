@@ -1,0 +1,72 @@
+{
+  "name": "tandt-e-document",
+  "private": true,
+  "description": "A project to provider legal document for free",
+  "version": "1.1.0",
+  "author": "david.vinhphamthanh@gmail.com",
+  "dependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.33",
+    "@reach/router": "^1.2.1",
+    "axios": "^0.19.0",
+    "dotenv": "^8.2.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "formik": "^2.0.4",
+    "gatsby": "^2.17.6",
+    "gatsby-background-image": "^0.9.11",
+    "gatsby-cli": "^2.8.9",
+    "gatsby-image": "^2.2.30",
+    "gatsby-plugin-eslint": "^2.0.8",
+    "gatsby-plugin-manifest": "^2.2.25",
+    "gatsby-plugin-material-ui": "^2.1.6",
+    "gatsby-plugin-offline": "^3.0.17",
+    "gatsby-plugin-react-helmet": "^3.1.13",
+    "gatsby-plugin-react-svg": "^2.1.2",
+    "gatsby-plugin-sharp": "^2.3.2",
+    "gatsby-plugin-sitemap": "^2.2.21",
+    "gatsby-source-filesystem": "^2.1.35",
+    "gatsby-source-strapi": "0.0.10",
+    "gatsby-theme-material-ui": "^1.0.5",
+    "gatsby-transformer-sharp": "^2.3.1",
+    "intersection-observer": "^0.7.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "postcss-preset-env": "^6.7.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-helmet": "^5.2.1",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.3",
+    "yup": "^0.27.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "gatsby serve",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git@gitlab.com:david.vinhphamthanh/tandt-gatsby.git"
+  }
+}
