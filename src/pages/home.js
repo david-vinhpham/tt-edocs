@@ -13,6 +13,7 @@ import Layout from '../components/layout';
 import { documentsProps } from '../components/commonProps';
 import LAYOUT from '../constants/layout';
 import NAVIGATION from '../constants/navBar';
+import Loading from '../components/loading';
 import BackgroundSection from '../components/backgroundSection';
 
 const useStyles = makeStyles(theme => ({
@@ -93,61 +94,70 @@ const Home = ({
   Object.keys(subcategories).map(cat => searchDocuments.push(...subcategories[cat]));
 
   return (
-    <Layout>
-      <Grid
-        component="section"
-        container
-        direction="column"
-        alignItems="center"
-        className={s.root}
-      >
-        <Grid component="div" item className={s.title}>
-          <BackgroundSection>
-            <Grid
-              component="div"
-              container
-              direction="column"
-              justify="center"
-              alignItems="center"
-            >
-              <Typography variant="h4" className={s.slogan}>
-                CREATE LEGAL DOCUMENTS QUICKLY AND EASILY!
-              </Typography>
-              <Typography variant="h6" color="inherit" align="center">
-                And it&apos;s completely FREE
-              </Typography>
-            </Grid>
-            <Grid component="div" item className={s.searchWrapper}>
-              <SearchInput
-                documents={searchDocuments}
-                placeholder="Search for a document"
-                wrapperClassName={s.searchInput}
-                iconClassName={s.searchIcon}
-              />
-            </Grid>
-            <Grid
-              component="div"
-              item
-              className={`${s.activityDesktop} ${s.fullWidth}`}
-            >
-              <Activities
-                onChooseTemplate={handleChooseTemplate}
-                total={documentsCount}
-              />
-            </Grid>
-          </BackgroundSection>
+    <>
+      <Loading />
+      <Layout>
+        <Grid
+          component="section"
+          container
+          direction="column"
+          alignItems="center"
+          className={s.root}
+        >
+          <Grid component="div" item className={s.title}>
+            <BackgroundSection>
+              <Grid
+                component="div"
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+              >
+                <Typography variant="h4" className={s.slogan}>
+                  CREATE LEGAL DOCUMENTS QUICKLY AND EASILY!
+                </Typography>
+                <Typography variant="h6" color="inherit" align="center">
+                  And it&apos;s completely FREE
+                </Typography>
+              </Grid>
+              <Grid component="div" item className={s.searchWrapper}>
+                <SearchInput
+                  documents={searchDocuments}
+                  placeholder="Search for a document"
+                  wrapperClassName={s.searchInput}
+                  iconClassName={s.searchIcon}
+                />
+              </Grid>
+              <Grid
+                component="div"
+                item
+                className={`${s.activityDesktop} ${s.fullWidth}`}
+              >
+                <Activities
+                  onChooseTemplate={handleChooseTemplate}
+                  total={documentsCount}
+                />
+              </Grid>
+            </BackgroundSection>
+          </Grid>
+          <Grid component="div" item className={`${s.activityMobile} ${s.fullWidth}`}>
+            <Activities
+              onChooseTemplate={handleChooseTemplate}
+              total={documentsCount}
+            />
+          </Grid>
+          <Grid component="div" item className={s.fullWidth}>
+            <Statistics
+              total={documentsCount}
+              downloadCount={totalDownloadStatistics}
+            />
+          </Grid>
+          <Grid component="div" item className={s.fullWidth}>
+            <HomeDocuments documents={subcategories} />
+          </Grid>
         </Grid>
-        <Grid component="div" item className={`${s.activityMobile} ${s.fullWidth}`}>
-          <Activities onChooseTemplate={handleChooseTemplate} total={documentsCount} />
-        </Grid>
-        <Grid component="div" item className={s.fullWidth}>
-          <Statistics total={documentsCount} downloadCount={totalDownloadStatistics} />
-        </Grid>
-        <Grid component="div" item className={s.fullWidth}>
-          <HomeDocuments documents={subcategories} />
-        </Grid>
-      </Grid>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 

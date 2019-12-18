@@ -148,7 +148,6 @@ const Details = ({ documentDetail, dispatchFetchDocumentDetail, docId }) => {
 
   const pdfDownload = pdfData && !isEmpty(pdfData);
   const wordDownload = wordData && !isEmpty(wordData);
-  const bothDownload = pdfDownload && wordDownload;
   const pdfUrl = pdfDownload && `${URL.HOST}${pdfData.url}`;
   const wordUrl = wordDownload && `${URL.HOST}${wordData.url}`;
   const iconPdfStyle = pdfDownload
@@ -340,7 +339,7 @@ const Details = ({ documentDetail, dispatchFetchDocumentDetail, docId }) => {
                     size="large"
                     startIcon={<Create />}
                     onClick={handleEditDocument}
-                    disabled={!(wordDownload && bothDownload)}
+                    disabled={!wordDownload}
                   >
                     Fill out the template - 100% FREE
                   </Button>
