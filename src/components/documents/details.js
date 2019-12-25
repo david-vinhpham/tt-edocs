@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { string, objectOf, any, func } from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import { Link, navigate } from 'gatsby';
 import moment from 'moment';
@@ -20,7 +19,6 @@ import Pdf from '../../images/pdf.svg';
 import Word from '../../images/word.svg';
 import NAVIGATION from '../../constants/navBar';
 import TIME from '../../constants/time';
-import URL from '../../constants/url';
 import Rating from '../rating';
 import { detailProps } from '../commonProps';
 
@@ -139,21 +137,17 @@ const Details = ({ documentDetail, dispatchFetchDocumentDetail, docId }) => {
     rate,
     pages,
     format,
-    wordData,
-    pdfData,
+    wordUrl,
+    pdfUrl,
   } = documentDetail;
   useEffect(() => {
     dispatchFetchDocumentDetail(docId);
   }, [docId]);
 
-  const pdfDownload = pdfData && !isEmpty(pdfData);
-  const wordDownload = wordData && !isEmpty(wordData);
-  const pdfUrl = pdfDownload && `${URL.HOST}${pdfData.url}`;
-  const wordUrl = wordDownload && `${URL.HOST}${wordData.url}`;
-  const iconPdfStyle = pdfDownload
+  const iconPdfStyle = pdfUrl
     ? `${s.iconButton} ${s.iconPdf}`
     : `${s.iconButton} ${s.iconDisabled}`;
-  const iconWordStyle = wordDownload
+  const iconWordStyle = wordUrl
     ? `${s.iconButton} ${s.iconWord}`
     : `${s.iconButton} ${s.iconDisabled}`;
 
@@ -295,7 +289,7 @@ const Details = ({ documentDetail, dispatchFetchDocumentDetail, docId }) => {
                       variant="outlined"
                       color="primary"
                       startIcon={<Pdf className={iconPdfStyle} />}
-                      disabled={!pdfDownload}
+                      disabled={!pdfUrl}
                     >
                       download
                     </Button>
@@ -309,7 +303,7 @@ const Details = ({ documentDetail, dispatchFetchDocumentDetail, docId }) => {
                       variant="outlined"
                       color="primary"
                       startIcon={<Word className={iconWordStyle} />}
-                      disabled={!wordDownload}
+                      disabled={!wordUrl}
                     >
                       download
                     </Button>
@@ -339,7 +333,7 @@ const Details = ({ documentDetail, dispatchFetchDocumentDetail, docId }) => {
                     size="large"
                     startIcon={<Create />}
                     onClick={handleEditDocument}
-                    disabled={!wordDownload}
+                    disabled={!wordUrl}
                   >
                     Fill out the template - 100% FREE
                   </Button>
